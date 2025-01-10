@@ -57,7 +57,7 @@ MTRAG consists of 110 multi-turn conversations that are converted to 842 evaluat
 
 We provide our benchmark of 110 conversations in conversation format [HERE](human/conversations/conversations.json). 
 
-They average 7.7 turns per conversation. Each conversation is on a single corpus domain and includes a variety of question types, answerability and multi-turn dimensions. All conversations created by our annotators have gone through a review phase to ensure they are of high quality. During the review phase annotators could accept or reject conversations, and repair responses, passage relvance, and enrichments as needed. They were not allowed to edit the questions or passages as such changes could negatively affect the conversation flow.
+They average 7.7 turns per conversation. Each conversation is on a single corpus domain and includes a variety of question types, answerability and multi-turn dimensions. All conversations created by our annotators have gone through a review phase to ensure they are of high quality. During the review phase annotators could accept or reject conversations, and repair responses, passage relevance, and enrichments as needed. They were not allowed to edit the questions or passages as such changes could negatively affect the conversation flow.
 
 ### Retrieval Tasks
 
