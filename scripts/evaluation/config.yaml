@@ -1,0 +1,28 @@
+Recall:
+  func: recall
+  prediction: prediction
+  target: target
+RougeL_stemFalse:
+  func: rouge_l
+  prediction: prediction
+  target: target
+BertscoreP:
+  func: bert_prec
+  prediction: prediction
+  target: target
+BertscoreR:
+  func: bert_recall
+  prediction: prediction
+  target: target
+BertKPrec:
+  func: bert_prec
+  prediction: prediction
+  target: passage
+Extractiveness_RougeL:
+  func: extractiveness_rouge
+  prediction: prediction
+  target: passage
+Length:
+  func: length
+  prediction: prediction
+  target: target
