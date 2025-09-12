@@ -34,11 +34,13 @@ Our benchmark is built on document corpora from 4 domains: ClapNQ, Cloud, FiQA a
 
 | Corpus | Domain  | Data | # Documents | # Passages |
 | ------------- |  ------------- | ------------- | ------------- | ------------- |
-|  ClapNQ [[1](https://github.com/primeqa/clapnq)] | Wikipedia | [Corpus](corpora/clapnq.jsonl.zip) | 4,293 | 183,408  |
-|  Cloud | Technical Documentation | [Corpus](corpora/cloud.json.zip) | 57,638 |  61,022  | 
-|  FiQA [[2](https://huggingface.co/datasets/BeIR/fiqa)] | Finance | [Corpus](corpora/fiqa.jsonl.zip) | 7,661 | 49,607 |
-|  Govt | Government  | [Corpus](corpora/govt.jsonl.zip) | 8,578 | 72,422 |
+|  ClapNQ [[1](https://github.com/primeqa/clapnq)] | Wikipedia | [Corpus](corpora/passage_level/clapnq.jsonl.zip) | 4,293 | 183,408  |
+|  Cloud | Technical Documentation | [Corpus](corpora/passage_level/cloud.json.zip) | 57,638 |  61,022  | 
+|  FiQA [[2](https://huggingface.co/datasets/BeIR/fiqa)] | Finance | [Corpus](corpora/passage_level/fiqa.jsonl.zip) | 7,661 | 49,607 |
+|  Govt | Government  | [Corpus](corpora/passage_level/govt.jsonl.zip) | 8,578 | 72,422 |
 
+> [!NOTE]
+> Please see the corpora [README](corpora/README.md) regarding using the corpus at passage level (preferred) vs document level.
 
    
 ## Human Data
@@ -65,10 +67,11 @@ The retrieval task per domain in BEIR format on the Answerable and Partial tasks
 
 | Name  | Corpus | Queries |
 | ------------- |  ------------- | ------------- |
-|  ClapNQ |  [Corpus](corpora/clapnq.jsonl) | [Queries](human/retrieval_tasks/clapnq/) |
-|  Cloud |  [Corpus](corpora/cloud.jsonl) | [Queries](human/retrieval_tasks/cloud/) | 
-|  FiQA |   [Corpus](corpora/fiqa.jsonl) | [Queries](human/retrieval_tasks/fiqa/) |
-|  Govt |   [Corpus](corpora/govt.jsonl) | [Queries](human/retrieval_tasks/govt/) |
+|  ClapNQ |  [Corpus](corpora/passage_level/clapnq.jsonl.zip) | [Queries](human/retrieval_tasks/clapnq/) |
+|  Cloud |  [Corpus](corpora/passage_level/cloud.jsonl.zip) | [Queries](human/retrieval_tasks/cloud/) | 
+|  FiQA |   [Corpus](corpora/passage_level/fiqa.jsonl.zip) | [Queries](human/retrieval_tasks/fiqa/) |
+|  Govt |   [Corpus](corpora/passage_level/govt.jsonl.zip) | [Queries](human/retrieval_tasks/govt/) |
+
 
 ### Generation Tasks
 
@@ -115,6 +118,10 @@ Retrieval experiments can be run using the BEIR codebase as described in the ret
 ### Running Generation
 
 Generation experiments can be run using any desired models (e.g. available on HuggingFace) and settings as described in the generation [README](human/generation_tasks/README.md). 
+
+### Evaluating Retrieval and Generation
+
+Retrieval and Generation experiments can be evaluated using our evaluation scripts as described in the evaluation [README](scripts/evaluation/README.md).
 
 ### Viewing Evaluations
 
