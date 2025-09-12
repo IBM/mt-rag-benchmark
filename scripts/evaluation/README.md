@@ -1,6 +1,8 @@
+## Evaluation 
 
+This page describes how to run evaluation for retrieval and generation on MTRAG.
 
-## Requirements
+### Requirements
 
 To run the retrieval and generation evaluation, create a new conda environment and install necessary dependencies from `requirements.txt` using
 
