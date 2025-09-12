@@ -168,24 +168,16 @@ def length(text: str, target: str, *args, **kwargs) -> int:
 def rb_agg(row):
     agg = 0
     
-    #  correctly IDK
-    if (row['answerability'][0] == 'UNANSWERABLE' or row['answerability'][0] == 'CONVERSATIONAL') and row['predictions'][-1]['class'] == "UNANSWERABLE":
-        agg = 1
-    # IDK but answerable
-    elif (row['answerability'][0] == 'UNANSWERABLE' or row['answerability'][0] == 'CONVERSATIONAL') and row['predictions'][-1]['class'] == "ANSWERABLE":
-        agg = 0
-    # incorrectly IDK
-    elif row['predictions'][-1]['class'] == "UNANSWERABLE":
-        agg = 0
-    # answered and answerable
+    try:
+        recall = (row['metrics']['BertscoreR'][0]+1)/2 
+    except:
+        recall = row['metrics']['Recall'][0]
+    rouge = row['metrics']['RougeL_stemFalse'][0]
+    if 'BertKPrec' not in row['metrics']:
+        extractiveness = 0
     else:
-        try:
-            recall = (row['metrics']['BertscoreR'][0]+1)/2 
-        except:
-            recall = row['metrics']['Recall'][0]
-        rouge = row['metrics']['RougeL_stemFalse'][0]
-        extractiveness = (max([0 if value == None else value for value in row['metrics']['BertKPrec']])+1)/2 #max(row['metrics']['Extractiveness_RougeL'])
-        agg = 3 * recall * rouge * extractiveness / ((recall * rouge) + (recall * extractiveness) + (rouge * extractiveness))
+        extractiveness = (max([0 if value == None else value for value in row['metrics']['BertKPrec']])+1)/2
+    agg = 3 * recall * rouge * extractiveness / ((recall * rouge) + (recall * extractiveness) + (rouge * extractiveness))
     row['metrics']['RB_agg'] = [agg]
 
 
@@ -196,7 +188,7 @@ logging.basicConfig(
     encoding="utf-8",
     level=logging.INFO,
 )
-logger = logging.getLogger(__name__)
+
 
 
 def parse_args():
@@ -236,7 +228,9 @@ def read_json_with_pandas(filepath: str) -> pd.DataFrame:
     )
 
 def score(instance: dict, metrics: Dict[str, dict]) -> List[dict]:
-    instance["metrics"] = {}
+
+    if "metrics" not in instance:
+        instance["metrics"] = {}
 
     for metric, scorer in metrics.items():
         
@@ -248,9 +242,7 @@ def score(instance: dict, metrics: Dict[str, dict]) -> List[dict]:
 
         if scorer["prediction"] == "prediction":
             prediction = instance["predictions"][0]["text"]
-        elif scorer["prediction"] == "prediction_label":
-            prediction = instance["predictions"][0]["class"]
-
+        
         for target in targets:
             if scorer["target"] == "target_label":
                 target = target["enrichments"]["answerability"]
@@ -271,6 +263,7 @@ def process(
     input_file: str,
     metrics_filename: str,
     evaluators: Dict[str, dict],
+    logger: logging.Logger
 ):
     # Step 1: Predictions directory
     
@@ -304,13 +297,9 @@ def process(
             fp.flush()
             progress_bar.update(1)
 
-
-if __name__ == "__main__":
-    # Step 0: Read command line arguments, environment variables and runtime configuration
-    args = parse_args()
-
-    # Step 1: Load evaluators
-    with open(args.evaluators, "r", encoding="utf-8") as f:
+def run_algorithmic_judges(evaluator_file, input_file, output_file):
+    logger = logging.getLogger(__name__)
+    with open(evaluator_file, "r", encoding="utf-8") as f:
         # Step 1.a: Read
         evaluators = yaml.safe_load(f)
 
@@ -318,6 +307,18 @@ if __name__ == "__main__":
         for evaluator in evaluators.values():
             evaluator["func"] = getattr(sys.modules[__name__], evaluator["func"])
 
-        process(input_file=args.input, metrics_filename=args.output, evaluators=evaluators)
+        process(input_file=input_file, metrics_filename=output_file, evaluators=evaluators, logger=logger)
 
     logger.info("Finished evaluating")
+    
+
+if __name__ == "__main__":
+    logger = logging.getLogger(__name__)
+    args = parse_args()
+
+    evaluator_file = args.evaluators
+    input_file = args.input
+    output_file = args.output
+    
+    run_algorithmic_judges(evaluator_file, input_file, output_file)
+

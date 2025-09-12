@@ -73,7 +73,7 @@ python scripts/evaluation/run_generation_eval.py -i <INPUT_FILE> -o <OUTPUT_FILE
 ```
 
 > [!TIP]
-> Our implementation for evaluting with GPT assumes an Azure endpoint. If you are using an alternate endpoint, you will need to modify the client [see here](judge_wrapper.py#L176). 
+> Our implementation for evaluting with GPT assumes an Azure endpoint. If you are using an alternate endpoint, you will need to modify the client [see here](azure_openai_client.py#L8). 
 
 
 To run HuggingFace model as Judge
