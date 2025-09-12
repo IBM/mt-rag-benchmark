@@ -1,5 +1,7 @@
 Our benchmark is built on document corpora from 4 domains: ClapNQ, Cloud, FiQA and Govt. ClapNQ and FiQA are existing corpora from QA/IR datasets, while Govt and Cloud are new corpora assembled specifically for this benchmark. 
 
+We provide two versions of the corpus, `document_level` and `passage_level`. `document_level` has the original document level offsets and `passage_level` provides the offsets we used during ingestion of the corpus. We *strongly* recommend you use the `passage_level` version of the corpus for all experiments to align with our experiments and reference passages.
+
 > [!IMPORTANT]  
 > Download and uncompress the files to use the corpora.
 
