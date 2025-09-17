@@ -55,7 +55,7 @@ Arguments
 
 ### Generation Evaluation
 
-This is a standalone script to run the evaluation metrics reported in the paper. It expects as input a file in our generation format (e.g. `human/generation_tasks/reference.jsonl`) with a single prediction output for each task in the following format:
+This is a standalone script to run the evaluation metrics reported in the paper. It expects as input a file in our generation format (e.g. `human/generation_tasks/reference.jsonl`) which for each task also includes an additional new `predictions` attribute representing the generated LLM response for that task using the following format:
 
 ```
  "predictions": [
