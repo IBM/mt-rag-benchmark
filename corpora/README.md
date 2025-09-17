@@ -7,7 +7,7 @@ We provide two versions of the corpus, `document_level` and `passage_level`. `do
 
 | Corpus | Domain  | Data | # Documents | # Passages |
 | ------------- |  ------------- | ------------- | ------------- | ------------- |
-|  ClapNQ [[1](https://github.com/primeqa/clapnq)] | Wikipedia | [Corpus](corpora/clapnq.jsonl.zip) | 4,293 | 183,408  |
-|  Cloud | Technical Documentation | [Corpus](corpora/cloud.jsonl.zip) | 57,638 |  61,022  | 
-|  FiQA [[2](https://huggingface.co/datasets/BeIR/fiqa)] | Finance | [Corpus](corpora/fiqa.jsonl.zip) | 7,661 | 49,607 |
-|  Govt | Government  | [Corpus](corpora/govt.jsonl.zip) | 8,578 | 72,422 |
+|  ClapNQ [[1](https://github.com/primeqa/clapnq)] | Wikipedia | [Corpus](passage_level/clapnq.jsonl.zip) | 4,293 | 183,408  |
+|  Cloud | Technical Documentation | [Corpus](passage_level/cloud.jsonl.zip) | 57,638 |  61,022  | 
+|  FiQA [[2](https://huggingface.co/datasets/BeIR/fiqa)] | Finance | [Corpus](passage_level/fiqa.jsonl.zip) | 7,661 | 49,607 |
+|  Govt | Government  | [Corpus](passage_level/govt.jsonl.zip) | 8,578 | 72,422 |
