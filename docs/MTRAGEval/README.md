@@ -2,15 +2,21 @@
 
 🎉 Welcome to MTRAGEval! MTRAGEval is a task for Evaluating Multi-Turn RAG Conversations at [SemEval 2026](https://semeval.github.io/SemEval2026/). 🎉
 
-# Join Our Mailing List!
+## 📝 Registration
+
+Please fill out this form to register for our task if you plan to participate in MTRAGEval: https://forms.gle/XgjqgDGgG7wgCb5r6
+
+## Join Our Mailing List!
 
 [MTRAGEval Mailing List](https://groups.google.com/g/mtrageval)
 
-# Training and Trial Data
+## Training and Trial Data
 
 The MTRAG Benchmark is released as the trial and training data for MTRAG. You can access the full dataset [here](https://github.com/IBM/mt-rag-benchmark/)
 
-# 📋 Tasks
+Note: The MTRAG Benchmark includes metadata that describes dimensions for each task including the question type (e.g. factoid), answerability (e.g. unanswerable, answerable), and multi-turn type (e.g. follow-up, clarification). This information will *NOT* be provided during evaluation. We will only provide the corpus domain e.g. ClapNQ, Govt.
+
+## 📋 Tasks
 
 * Task A: Retrieval Only
 * Task B: Generation with Reference Passages (Reference)
@@ -18,10 +24,40 @@ The MTRAG Benchmark is released as the trial and training data for MTRAG. You ca
 
 Read more about our tasks in our [proposal](../MT_RAG_SemEval_Proposal.pdf)
 
-# Evaluation Scripts
+## Evaluation 
+
+### Evaluation Scripts
 
 Retrieval and Generation Evaluation Scripts are available on the GitHub repo! Please visit the evaluation [README](https://github.com/IBM/mt-rag-benchmark/blob/main/scripts/evaluation/README.md) for more information.
-# 📆 Timeline (Tentative)
+
+⌛ Coming Soon: Validation Script
+
+### 🏆 Leaderboard Ranking
+
+We will use the Evaluation Scripts provided above to evaluate each team's system. 
+
+The ranking for the generation Tasks: B and C will be computed as the harmonic mean of $RL_F$, $RB_{llm}$ and $RB_{alg}$. We present the ranking of the results provided in the MTRAG paper to illustrate the ranking. Please note, that ranking is not the only indication of a strong system. In particular, the difference in rank may be large if several systems achieve close scores as in the results provided below.
+
+|Rank | Task B (Reference) | Harmonic Mean |Rank	|		Task C (RAG) | Harmonic Mean	|	
+| -- | -- | -- | -- | -- | -- |
+|	1st	|	Reference	|	0.89	|	1st	|	Reference	|	0.81	|
+|	2nd	|	GPT-4o	|	0.60	|	2nd	|	GPT-4o	|	0.53	|
+|	2nd	|	Llama-3.1-405B-Instruct	|	0.60	|	2nd	|	Llama-3.1-405B-Instruct	|	0.53	|
+|	4th	|	GPT-4o-mini	|	0.57	|	4th	|	Qwen-2.5-(72B)	|	0.52	|
+|	4th	|	Qwen-2.5-(72B)	|	0.57	|	4th	|	Llama-3.1-70B-Instruct	|	0.52	|
+|	4th	|	Command-R+(104B)	|	0.57	|	6th	|	GPT-4o-mini	|	0.51	|
+|	7th	|	Qwen-2.5-(7B)	|	0.55	|	6th	|	Command-R+(104B)	|	0.51	|
+|	8th	|	Llama-3.1-70B-Instruct	|	0.54	|	6th	|	Qwen-2.5-(7B)	|	0.51	|
+|	9th	|	Mixtral-8x22B-Instruct	|	0.51	|	9th	|	Mixtral-8x22B-Instruct	|	0.48	|
+|	10th	|	Llama-3.1-8B-Instruct	|	0.45	|	10th	|	Llama-3.1-8B-Instruct	|	0.45	|
+
+## Task Submission and Evaluation Data
+
+Task Submission will only be open during the evaluation phase. All submissions will be via a google form that will be provided per task.
+
+The evaluation data will be provided to all registered participants at the start of each evaluation phase.
+
+## 📆 Timeline (Tentative)
 
 * Sample and Training data ready 15 July 2025
 * Evaluation start 10 January 2026 Task A and C
