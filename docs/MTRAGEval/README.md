@@ -36,6 +36,8 @@ Retrieval and Generation Evaluation Scripts are available on the GitHub repo! Pl
 
 We will use the Evaluation Scripts provided above to evaluate each team's system. 
 
+The ranking for the retrieval Task A will be using nDCG.
+
 The ranking for the generation Tasks: B and C will be computed as the harmonic mean of RL_F, RB_llm and RB_alg. We present the ranking of the results provided in the MTRAG paper to illustrate the ranking. Please note, that ranking is not the only indication of a strong system. In particular, the difference in rank may be large if several systems achieve close scores as in the results provided below.
 
 |Rank | Task B (Reference) | Harmonic Mean |Rank	|		Task C (RAG) | Harmonic Mean	|	
