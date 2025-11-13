@@ -57,6 +57,8 @@ Task Submission will only be open during the evaluation phase. All submissions w
 
 The evaluation data will be provided to all registered participants at the start of each evaluation phase.
 
+Note: The MTRAG Benchmark includes metadata that describes dimensions for each task including the question type (e.g. factoid), answerability (e.g. unanswerable, answerable), and multi-turn type (e.g. follow-up, clarification). This information will NOT be provided during evaluation. We will only provide the corpus domain e.g. ClapNQ, Govt.
+
 ## 📆 Timeline (Tentative)
 
 * Sample and Training data ready 15 July 2025
