@@ -1,6 +1,6 @@
 # MTRAG SemEval 2026 Team Repository
 
-Fork of IBM’s Multi-Turn Retrieval-Augmented Generation (MTRAG) benchmark.  
+Fork of IBM's Multi-Turn Retrieval-Augmented Generation (MTRAG) benchmark.  
 This repository contains our team's experiments for the **SemEval 2026 Multi-Turn RAG** competition.
 
 ## Structure
@@ -12,6 +12,21 @@ This repository contains our team's experiments for the **SemEval 2026 Multi-Tur
 
 ## Setup
 ```bash
-git clone https://github.com/Umit-Azirakhmet/mt-rag-benchmark.git
-cd mt-rag-benchmark
-pip install -r requirements.txt
+git clone https://github.com/pratirvce/MTRAG-Eval.git
+cd MTRAG-Eval
+pip install -r experiments/retrieval/requirements.txt
+```
+
+## Task A: Retrieval Only
+
+See `experiments/retrieval/README.md` for detailed instructions on running the retrieval system.
+
+### Quick Start
+```bash
+cd experiments/retrieval
+python retrieval_pipeline.py --retriever hybrid --query_type rewrite --collection clapnq --top_k 100
+```
+
+## About
+
+Evaluating Multi-Turn RAG Conversations
