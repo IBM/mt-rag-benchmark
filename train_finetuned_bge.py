@@ -10,6 +10,26 @@ logging.basicConfig(format='%(asctime)s - %(message)s',
                     datefmt='%Y-%m-%d %H:%M:%S',
                     level=logging.INFO)
 
+# --- REPRODUCIBILITY SETUP (Fixes the "Friend's Run" Issue) ---
+def set_seed(seed=42):
+    """
+    Sets the seed for all random number generators to ensure 
+    reproducible results on CPU and GPU.
+    """
+    random.seed(seed)
+    np.random.seed(seed)
+    torch.manual_seed(seed)
+    torch.cuda.manual_seed_all(seed)
+    
+    # Force strict determinism for NVIDIA GPUs (School GPU)
+    torch.backends.cudnn.deterministic = True
+    torch.backends.cudnn.benchmark = False
+    
+    logging.info(f"🔒 Random seed set to {seed} for reproducibility.")
+
+# !!! CRITICAL: Call this before doing anything else !!!
+set_seed(42)
+
 # Start from the pre-trained BGE model
 BASE_MODEL_NAME = "BAAI/bge-base-en-v1.5"
 
