@@ -104,7 +104,7 @@ The score will not be used, so it can always be 1. The corpus-id is per line. If
 
 ## Task Organizers
 
-Sara Rosenthal [✉️](sjrosenthal@us.ibm.com)  
-Yannis Katsis [✉️](yannis.katsis@ibm.com)  
-Vraj Shah [✉️](vraj@ibm.com)  
-Marina Danilevsky [✉️](mdanile@us.ibm.com)   
+Sara Rosenthal [✉️](mailto:sjrosenthal@us.ibm.com)  
+Yannis Katsis [✉️](mailto:yannis.katsis@ibm.com)  
+Vraj Shah [✉️](mailto:vraj@ibm.com)  
+Marina Danilevsky [✉️](mailto:mdanile@us.ibm.com)   
