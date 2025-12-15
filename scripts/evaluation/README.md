@@ -13,6 +13,97 @@ pip install -c scripts/evaluation/constraints.txt -r scripts/evaluation/requirem
 
 All evaluation scripts run on top of our file format as provided in `human/generation_tasks/*.jsonl`
 
+### Format Checker Script
+
+We provide a standalone script to validate whether your prediction JSONL file follows the required evaluation formats for all three tasks. The checker supports three modes depending on the evaluation task:
+* `retrieval_taska` - validates the fields required by the retrieval evaluation
+* `generation_taskb` - validates the fields required by the generation evaluation
+* `rag_taskc` - validates the fields required by the RAG evaluation
+
+```
+python scripts/evaluation/format_checker.py --input_file <INPUT_FILE> --prediction_file <PREDICTION_FILE> --mode <retrieval_taska|generation_taskb|rag_taskc>
+```
+
+The prediction file does not include fields such as `targets` and `enrichments`.
+
+Sample Input data format for Task A, C:
+```
+{
+  "conversation_id": "dd6b6ffd177f2b311abe676261279d2f",
+  "task_id": "dd6b6ffd177f2b311abe676261279d2f::2",
+  "Collection": "mt-rag-clapnq-elser-512-100-20240503",
+  "input": [
+    {
+      "speaker": "user",
+      "text": "where do the arizona cardinals play this week"
+    }
+  ]
+}
+```
+
+Sample prediction file for Task A and input data format for Task B:
+```
+{
+  "conversation_id": "dd6b6ffd177f2b311abe676261279d2f",
+  "task_id": "dd6b6ffd177f2b311abe676261279d2f::2",
+  "Collection": "mt-rag-clapnq-elser-512-100-20240503",
+  "input": [
+    {
+      "speaker": "user",
+      "text": "where do the arizona cardinals play this week"
+    }
+  ]
+  "contexts":
+    [
+        {
+            "document_id": "822086267_7384-8758-0-1374",
+            "text": "...",
+            "score": 27.759
+        }, ...
+    ],
+}
+```
+
+Sample prediction file for Task B and Task C:
+```
+{
+  "conversation_id": "dd6b6ffd177f2b311abe676261279d2f",
+  "task_id": "dd6b6ffd177f2b311abe676261279d2f::2",
+  "Collection": "mt-rag-clapnq-elser-512-100-20240503",
+  "input": [
+    {
+      "speaker": "user",
+      "text": "where do the arizona cardinals play this week"
+    }
+  ]
+  "contexts":
+    [
+        {
+            "document_id": "822086267_7384-8758-0-1374",
+            "text": "...",
+            "score": 27.759
+        }, ...
+    ],
+    "predictions":
+    [
+        {
+            "text": "..."
+        }
+    ]
+}
+```
+
+Sample output format:
+
+```
+File size: ...
+[File size is within the limit.] or [Error: File exceeds 20 MB limit.]
+
+--- Format Check Results ---
+[Found 1 warning(s) ...]
+[Format is valid for the eval script.] or [Found x issues: ...]
+```
+
 ### Retrieval Evaluation
 
 The retrieval script looks at the `contexts` field, which is a list of JSON objects per task. `document_id` and `score` are required for retrieval evaluation and the rest are optional. All fields are necessary for the generation script.
