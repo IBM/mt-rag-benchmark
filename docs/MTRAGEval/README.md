@@ -28,9 +28,7 @@ Read more about our tasks in our [proposal](../MT_RAG_SemEval_Proposal.pdf)
 
 ### Evaluation Scripts
 
-Retrieval and Generation Evaluation Scripts are available on the GitHub repo! Please visit the evaluation [README](https://github.com/IBM/mt-rag-benchmark/blob/main/scripts/evaluation/README.md) for more information.
-
-⌛ Coming Soon: Validation Script
+Evaluation and Format Checker scripts are available on the GitHub repo! Please visit the evaluation [README](https://github.com/IBM/mt-rag-benchmark/blob/main/scripts/evaluation/README.md) for more information.
 
 ### 🏆 Leaderboard Ranking
 
@@ -56,6 +54,8 @@ The ranking for the generation Tasks: B and C will be computed as the harmonic m
 ## Task Submission and Evaluation Data
 
 Task Submission will only be open during the evaluation phase. All submissions will be via a google form that will be provided per task.
+
+Because LLM judge evaluation is resource-intensive, we're restricting submission to one run per task per team (if you submit more than one we will only evaluate the last one). We will release the predictions after the evaluation phase so that you can try out and report other techniques in your paper.
 
 The evaluation data will be provided to all registered participants at the start of each evaluation phase.
 
