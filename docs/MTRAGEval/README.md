@@ -64,7 +64,7 @@ Note: The MTRAG Benchmark includes metadata that describes dimensions for each t
 ## 📆 Timeline (Tentative)
 
 * Sample and Training data ready 15 July 2025
-* Evaluation start 10 January 2026 Task A and C
+* Evaluation start 12 January 2026 Task A and C
 * Evaluation end 20 January 2026 Task A and C
 * Evaluation start 21 January 2026 Task B
 * Evaluation end by 31 January 2026 Task B
