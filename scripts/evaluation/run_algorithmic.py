@@ -177,7 +177,10 @@ def rb_agg(row):
         extractiveness = 0
     else:
         extractiveness = (max([0 if value == None else value for value in row['metrics']['BertKPrec']])+1)/2
-    agg = 3 * recall * rouge * extractiveness / ((recall * rouge) + (recall * extractiveness) + (rouge * extractiveness))
+    if rouge == 0 or recall == 0 or extractiveness == 0:
+        agg = 0
+    else:
+        agg = 3 * recall * rouge * extractiveness / ((recall * rouge) + (recall * extractiveness) + (rouge * extractiveness))
     row['metrics']['RB_agg'] = [agg]
 
 
