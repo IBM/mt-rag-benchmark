@@ -12,17 +12,36 @@ Please fill out this form to register for our task if you plan to participate in
 
 ## Training and Trial Data
 
-The MTRAG Benchmark is released as the trial and training data for MTRAG. You can access the full dataset [here](https://github.com/IBM/mt-rag-benchmark/)
+The MTRAG Benchmark is released as the trial, training, and validation data for MTRAGEval. You can access the full dataset [here](https://github.com/IBM/mt-rag-benchmark/). We will release new evaluation data during the evalution phase.
 
 Note: The MTRAG Benchmark includes metadata that describes dimensions for each task including the question type (e.g. factoid), answerability (e.g. unanswerable, answerable), and multi-turn type (e.g. follow-up, clarification). This information will *NOT* be provided during evaluation. We will only provide the corpus domain e.g. ClapNQ, Govt.
 
 ## 📋 Tasks
 
-* Task A: Retrieval Only
-* Task B: Generation with Reference Passages (Reference)
-* Task C: Generation with Retrieved Passages (RAG)
+### Task A: Retrieval Only
+  
+*Input*: You are given a set of tasks, where each task contains (a) a conversation comprising of a set of user question/agent response turns ending with a user question and (b) the corresponding document corpus.
+
+*Output*: For each task, you are asked to return an ordered list of up to 10 passages from the document corpus that are relevant to the last user question (with more relevant passages appearing earlier in the list). Note that your submission for this task will only be evaluated on the subset of answerable questions; however, to avoid information leak for the other tasks, you will not be provided beforehand with info on which questions are answerable or not. 
+
+### Task B: Generation with Reference Passages (Reference)
+*Input*: You are given a set of tasks, where each task contains (a) a conversation comprising of a set of user question/agent response turns ending with a user question and (b) a set of relevant passages for the last user question.
+
+*Output*: For each task, you are asked to generate an agent response for the last user question (which should be faithful w.r.t. the relevant passages).
+
+### Task C: Generation with Retrieved Passages (RAG)
+ 
+*Input*: You are given a set of tasks, where each task contains (a) a conversation comprising of a set of user question/agent response turns ending with a user question and (b) the corresponding document corpus.
+ 
+*Output*: For each task, you are asked to first retrieve up to 10 passages from the documents corpus that are relevant to the user question and use them to generate an agent response for the last user question (which should be faithful w.r.t. the retrieved passages). 
+
+*Note*: Your submission for Task C will be evaluated based **only** on the generated agent response; the intermediate list of retrieved passages is just a means to the end but will not be taken into account in the evaluation. We allow a maximum of 10 passages to be returned but you do not need to use the full amount (in our experiments in the MTRAG paper we used 5).
 
 Read more about our tasks in our [proposal](../MT_RAG_SemEval_Proposal.pdf)
+
+## Data Format
+
+The evaluation data follows the MTRAG data format. Input and Output format for the task, sample data, and Format Checker scripts are available on the GitHub repo! Please visit the evaluation [README](https://github.com/IBM/mt-rag-benchmark/blob/main/scripts/evaluation/README.md) for more information.
 
 ## Evaluation 
 
@@ -66,12 +85,12 @@ Note: The MTRAG Benchmark includes metadata that describes dimensions for each t
 * Sample and Training data ready 15 July 2025
 * Evaluation start 12 January 2026 Task A and C
 * Evaluation end 20 January 2026 Task A and C
-* Evaluation start 21 January 2026 Task B
-* Evaluation end by 31 January 2026 Task B
-* Paper submission due February 2026
-* Notification to authors March 2026
-* Camera ready due April 2026
-* SemEval workshop Summer 2026 (co-located with a major NLP conference)
+* Evaluation start 26 January 2026 Task B
+* Evaluation end by 2 February 2026 Task B
+* Paper submission due February 2026 (Tentative)
+* Notification to authors March 2026 (Tentative)
+* Camera ready due April 2026 (Tentative)
+* SemEval workshop Summer 2026 (co-located with [ACL 2026](https://2026.aclweb.org/))
 
 
 <!-- ## Task A: Retrieval Only
