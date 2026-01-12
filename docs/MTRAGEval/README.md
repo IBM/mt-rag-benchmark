@@ -22,7 +22,9 @@ Note: The MTRAG Benchmark includes metadata that describes dimensions for each t
   
 *Input*: You are given a set of tasks, where each task contains (a) a conversation comprising of a set of user question/agent response turns ending with a user question and (b) the corresponding document corpus.
 
-*Output*: For each task, you are asked to return an ordered list of up to 10 passages from the document corpus that are relevant to the last user question (with more relevant passages appearing earlier in the list). Note that your submission for this task will only be evaluated on the subset of answerable questions; however, to avoid information leak for the other tasks, you will not be provided beforehand with info on which questions are answerable or not. 
+*Output*: For each task, you are asked to return an ordered list of 10 passages from the document corpus that are relevant to the last user question (with more relevant passages appearing earlier in the list). Note that your submission for this task will only be evaluated on the subset of answerable questions; however, to avoid information leak for the other tasks, you will not be provided beforehand with info on which questions are answerable or not. 
+
+Note: For task A, we will produce results @ 1, 3, 5, 10 so you should make sure to return 10 contexts.
 
 ### Task B: Generation with Reference Passages (Reference)
 *Input*: You are given a set of tasks, where each task contains (a) a conversation comprising of a set of user question/agent response turns ending with a user question and (b) a set of relevant passages for the last user question.
@@ -35,7 +37,7 @@ Note: The MTRAG Benchmark includes metadata that describes dimensions for each t
  
 *Output*: For each task, you are asked to first retrieve up to 10 passages from the documents corpus that are relevant to the user question and use them to generate an agent response for the last user question (which should be faithful w.r.t. the retrieved passages). 
 
-*Note*: Your submission for Task C will be evaluated based **only** on the generated agent response; the intermediate list of retrieved passages is just a means to the end but will not be taken into account in the evaluation. We allow a maximum of 10 passages to be returned but you do not need to use the full amount (in our experiments in the MTRAG paper we used 5).
+*Note*: Your submission for Task C will be evaluated mainly based on the generated agent response; the intermediate list of retrieved passages is part of the evaluation for faithfulness. We allow a maximum of 10 passages to be returned but you do not need to use the full amount (in our experiments in the MTRAG paper we used 5). Returning more contexts may reduce the faithfulness score. We recommend returning at most 5 as used in our paper.
 
 Read more about our tasks in our [proposal](../MT_RAG_SemEval_Proposal.pdf)
 
