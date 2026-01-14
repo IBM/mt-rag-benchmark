@@ -83,7 +83,7 @@ def load_qrels(qrels_file):
 def prepare_results_dict(input_file):
     results = {}
     collection_results = {}
-    with open(input_file, 'r') as f:
+    with open(input_file, 'r', encoding="utf-8") as f:
         for line in f:
             item = json.loads(line)
             query_id = item["task_id"]
