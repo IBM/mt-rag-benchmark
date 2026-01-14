@@ -180,7 +180,7 @@ def rb_agg(row):
     if rouge == 0 or recall == 0 or extractiveness == 0:
         agg = 0
     else:
-        agg = 3 * recall * rouge * extractiveness / ((recall * rouge) + (recall * extractiveness) + (rouge * extractiveness))
+        agg = 3 * recall * rouge * extractiveness / ((recall * rouge) + (recall * extractiveness) + (rouge * extractiveness))    
     row['metrics']['RB_agg'] = [agg]
 
 
