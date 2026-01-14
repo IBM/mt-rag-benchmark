@@ -185,7 +185,7 @@ def compare_task_ids(input_file, prediction_file):
 
     def read_ids(path):
         ids = []
-        with open(path, "r") as f:
+        with open(path, "r", encoding="utf-8") as f:
             for line_no, line in enumerate(f, start=1):
                 line = line.strip()
                 if not line:
@@ -231,7 +231,7 @@ def validate_prediction_file(input_file:str, prediction_file: str, mode: str):
     task_id_errors = compare_task_ids(input_file, prediction_file)
     errors.extend(task_id_errors)
 
-    with open(prediction_file, "r") as f:
+    with open(prediction_file, "r", encoding="utf-8") as f:
         for line_no, line in enumerate(f, start=1):
             process_line(line, line_no, errors, mode)
 
@@ -255,6 +255,10 @@ def main():
         help="Specify whether to run the format checker for retrieval eval or generation eval."
     )
     args = parser.parse_args()
+
+    if not args.prediction_file.endswith('.jsonl'):
+        print(f"Error: Prediction file must be a jsonlines file and have .jsonl extension. Got: {args.prediction_file}")
+        sys.exit(1)
 
     check_file_size(args.prediction_file)
                     
