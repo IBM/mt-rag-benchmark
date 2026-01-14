@@ -257,7 +257,7 @@ def main():
     args = parser.parse_args()
 
     if not args.prediction_file.endswith('.jsonl'):
-        print(f"Error: Prediction file must have .jsonl extension. Got: {args.prediction_file}")
+        print(f"Error: Prediction file must be a jsonlines file and have .jsonl extension. Got: {args.prediction_file}")
         sys.exit(1)
 
     check_file_size(args.prediction_file)
