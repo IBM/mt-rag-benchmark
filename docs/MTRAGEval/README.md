@@ -84,16 +84,73 @@ Note: The MTRAG Benchmark includes metadata that describes dimensions for each t
 
 ## 📆 Timeline (Tentative)
 
-* Sample and Training data ready 15 July 2025
-* Evaluation start 12 January 2026 Task A and C
-* Evaluation end 20 January 2026 Task A and C
-* Evaluation start 26 January 2026 Task B
-* Evaluation end by 2 February 2026 Task B
-* Paper submission due February 2026 (Tentative)
-* Notification to authors March 2026 (Tentative)
-* Camera ready due April 2026 (Tentative)
+* ~~Sample and Training data ready 15 July 2025~~
+* ~~Evaluation start 12 January 2026 Task A and C~~
+* ~~Evaluation end 20 January 2026 Task A and C~~
+* ~~Evaluation start 26 January 2026 Task B~~
+* ~~Evaluation end by 2 February 2026 Task B~~
+* Paper submission due 2 March 2026
+* Notification to authors 9 April 2026 (Tentative)
+* Camera ready due 30 April 2026 (Tentative)
 * SemEval workshop Summer 2026 (co-located with [ACL 2026](https://2026.aclweb.org/))
 
+## Relevant Papers
+
+MTRAG:
+
+```
+@article{10.1162/TACL.a.19,
+    author = {Katsis, Yannis and Rosenthal, Sara and Fadnis, Kshitij and Gunasekara, Chulaka and Lee, Young-Suk and Popa, Lucian and Shah, Vraj and Zhu, Huaiyu and Contractor, Danish and Danilevsky, Marina},
+    title = {mtRAG: A Multi-Turn Conversational Benchmark for Evaluating
+                    Retrieval-Augmented Generation Systems},
+    journal = {Transactions of the Association for Computational Linguistics},
+    volume = {13},
+    pages = {784-808},
+    year = {2025},
+    month = {07},
+    issn = {2307-387X},
+    doi = {10.1162/TACL.a.19},
+    url = {https://doi.org/10.1162/TACL.a.19},
+    eprint = {https://direct.mit.edu/tacl/article-pdf/doi/10.1162/TACL.a.19/2540217/tacl.a.19.pdf},
+}
+```
+
+MTRAG-UN: (coming soon)
+
+```
+```
+
+MTRAGEval (coming soon)
+
+```
+```
+
+InspectorRAGet:
+
+```
+@inproceedings{fadnis-etal-2025-inspectorraget,
+    title = "{I}nspector{RAG}et: An Introspection Platform for {RAG} Evaluation",
+    author = "Fadnis, Kshitij P  and
+      Patel, Siva Sankalp  and
+      Boni, Odellia  and
+      Katsis, Yannis  and
+      Rosenthal, Sara  and
+      Sznajder, Benjamin  and
+      Danilevsky, Marina",
+    editor = "Dziri, Nouha  and
+      Ren, Sean (Xiang)  and
+      Diao, Shizhe",
+    booktitle = "Proceedings of the 2025 Conference of the Nations of the Americas Chapter of the Association for Computational Linguistics: Human Language Technologies (System Demonstrations)",
+    month = apr,
+    year = "2025",
+    address = "Albuquerque, New Mexico",
+    publisher = "Association for Computational Linguistics",
+    url = "https://aclanthology.org/2025.naacl-demo.13/",
+    doi = "10.18653/v1/2025.naacl-demo.13",
+    pages = "125--134",
+    ISBN = "979-8-89176-191-9",
+}
+```
 
 <!-- ## Task A: Retrieval Only
 
