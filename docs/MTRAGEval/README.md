@@ -115,14 +115,32 @@ MTRAG:
 }
 ```
 
-MTRAG-UN: (coming soon)
+MTRAG-UN:
 
 ```
+@misc{rosenthal2026mtragunbenchmarkopenchallenges,
+title={MTRAG-UN: A Benchmark for Open Challenges in Multi-Turn RAG Conversations},
+author={Sara Rosenthal and Yannis Katsis and Vraj Shah and Lihong He and Lucian Popa and Marina Danilevsky},
+year={2026},
+eprint={2602.23184},
+archivePrefix={arXiv},
+primaryClass={cs.CL},
+url={https://arxiv.org/abs/2602.23184},
+}
+
 ```
 
-MTRAGEval (coming soon)
+MTRAGEval
 
 ```
+@inproceedings{Rosenthal2026MTRAGEval,
+title={SemEval-2026 Task 8: MTRAGEval: Evaluating Multi-Turn RAG Conversations},
+author={Rosenthal, Sara and Shah, Vraj and Katsis, Yannis and Danilevsky, Marina},
+booktitle={Proceedings of the 20th International Workshop on Semantic Evaluation (SemEval-2026)},
+address={San Diego, California},
+year={2026},
+organization={Association for Computational Linguistics},
+}
 ```
 
 InspectorRAGet:
