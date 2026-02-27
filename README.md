@@ -81,9 +81,9 @@ See the [mtragun-human README](mtragun-human/README.md) for full details.
 
 ## MTRAGEval
 
-[MTRAGEval](https://ibm.github.io/mt-rag-benchmark/MTRAGEval/) is a task for Evaluating Multi-Turn RAG Conversations at SemEval 2026. MTRAG is the training data and MTRAG-UN is the evaluation benchmark.
+[MTRAGEval](https://ibm.github.io/mt-rag-benchmark/MTRAGEval/) is a task for Evaluating Multi-Turn RAG Conversations at [SemEval 2026](https://semeval.github.io/SemEval2026/). MTRAG is the training data and MTRAG-UN is the evaluation benchmark.
 
-See the [mtrageval README](mtrageval/README.md) for full details.
+Sample data from MTRAG in the format used by the [evaluation scripts](scripts/evaluation/) is available at [`scripts/evaluation/sample_data`](scripts/evaluation/sample_data/).
 
 ## Getting Started
 

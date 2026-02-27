@@ -26,7 +26,7 @@ We provide a standalone script to validate whether your prediction JSONL file fo
 python scripts/evaluation/format_checker.py --input_file <INPUT_FILE> --prediction_file <PREDICTION_FILE> --mode <retrieval_taska|generation_taskb|rag_taskc>
 ```
 
-Sample input files are available at `human/mtrageval/sample_data`. These sample files correspond to the first 10 examples from the MT-RAG dataset and can be used to verify that your method produces correctly formatted outputs before running the full evaluation.
+Sample input files are available at `scripts/evaluation/sample_data`. These sample files correspond to the first 10 examples from the MT-RAG dataset and can be used to verify that your method produces correctly formatted outputs before running the full evaluation.
 
 You can easily construct valid input files for the format checker and evaluation scripts by modifying any of the files under `human/generation_tasks/*.jsonl`. This an be achieved by removing fields such as `enrichments`, `targets`, and `predictions`. The prediction file does not include fields such as `targets` and `enrichments`.
 
@@ -159,7 +159,7 @@ This is a standalone script to run the evaluation metrics reported in the paper.
 ```
 
 
-The `scripts/evaluation/responses-10.jsonl` is sample input with predictions on the first 10 reference tasks.
+The `scripts/evaluation/sample_data/responses-10.jsonl` is sample input with predictions on the first 10 reference tasks.
 
 To run OpenAI GPT4o-mini as Judge
 
