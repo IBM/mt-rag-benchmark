@@ -4,4 +4,4 @@ MTRAGEval is a task for Evaluating Multi-Turn RAG Conversations at [SemEval 2026
 
 [MTRAG](../mtrag-human/) is the training data and [MTRAG-UN](../mtragun-human/) is the evaluation benchmark.
 
-Sample data from MTRAG in the format used by the [evaluation scripts](../scripts/evaluation/) is available in [sample_data/](sample_data/).
+Sample data from MTRAG in the format used by the [evaluation scripts](../scripts/evaluation/) is available in this directory.

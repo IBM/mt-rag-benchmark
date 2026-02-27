@@ -16,7 +16,7 @@ We present MTRAG-UN, a benchmark for exploring open challenges in multi-turn ret
 
 The paper describing the benchmark and experiments is available on Arxiv:
 
-[MTRAG-UN: A Benchmark for Open Challenges in Multi-Turn RAG Conversations](https://arxiv.org/abs/submit/7306369)\
+[MTRAG-UN: A Benchmark for Open Challenges in Multi-Turn RAG Conversations](https://arxiv.org/abs/2602.23184)\
 _Sara Rosenthal, Yannis Katsis, Vraj Shah, Lihong He, Lucian Popa, Marina Danilevsky_
 
 ## Corpora

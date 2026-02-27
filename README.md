@@ -12,7 +12,7 @@ The papers describing the benchmarks and experiments are available on Arxiv:
 _Yannis Katsis, Sara Rosenthal, Kshitij Fadnis, Chulaka Gunasekara, Young-Suk Lee, Lucian Popa, Vraj Shah, Huaiyu Zhu, Danish Contractor, Marina Danilevsky_\
 Transactions of the Association for Computational Linguistics, 2025
 
-[MTRAG-UN: A Benchmark for Open Challenges in Multi-Turn RAG Conversations](https://arxiv.org/abs/submit/7306369)\
+[MTRAG-UN: A Benchmark for Open Challenges in Multi-Turn RAG Conversations](https://arxiv.org/abs/2602.23184)\
 _Sara Rosenthal, Yannis Katsis, Vraj Shah, Lihong He, Lucian Popa, Marina Danilevsky_
 
 If you use MTRAG, please cite the paper as follows:
@@ -37,10 +37,10 @@ If you use MTRAG-UN, please cite the paper as follows:
       title={MTRAG-UN: A Benchmark for Open Challenges in Multi-Turn RAG Conversations},
       author={Sara Rosenthal and Yannis Katsis and Vraj Shah and Lihong He and Lucian Popa and Marina Danilevsky},
       year={2026},
-      eprint={submit/7306369},
+      eprint={2602.23184},
       archivePrefix={arXiv},
       primaryClass={cs.CL},
-      url={https://arxiv.org/abs/submit/7306369},
+      url={https://arxiv.org/abs/2602.23184},
 }
 ```
 
