@@ -17,7 +17,7 @@ _Sara Rosenthal, Yannis Katsis, Vraj Shah, Lihong He, Lucian Popa, Marina Danile
 
 If you use MTRAG, please cite the paper as follows:
 
-```
+```bibtex
 @article{katsis2025mtrag,
       title={MTRAG: A Multi-Turn Conversational Benchmark for Evaluating Retrieval-Augmented Generation Systems},
       author={Yannis Katsis and Sara Rosenthal and Kshitij Fadnis and Chulaka Gunasekara and Young-Suk Lee and Lucian Popa and Vraj Shah and Huaiyu Zhu and Danish Contractor and Marina Danilevsky},
@@ -32,7 +32,7 @@ If you use MTRAG, please cite the paper as follows:
 
 If you use MTRAG-UN, please cite the paper as follows:
 
-```
+```bibtex
 @misc{rosenthal2026mtragun,
       title={MTRAG-UN: A Benchmark for Open Challenges in Multi-Turn RAG Conversations},
       author={Sara Rosenthal and Yannis Katsis and Vraj Shah and Lihong He and Lucian Popa and Marina Danilevsky},
