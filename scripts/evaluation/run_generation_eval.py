@@ -75,15 +75,17 @@ if __name__ == "__main__":
     
     
     if args.provider == "openai":
+        underspecified_eval("openai", args.output, args.output)
         run_idk_judge(args.provider, "", args.output, args.output)
         run_ragas_judges_openai(args.output, args.output, args.openai_key, args.azure_host)
         run_radbench_judge(args.provider, "", args.output, args.output)
-        
+
         get_idk_conditioned_metrics(args.output, args.output)
     else:
+        underspecified_eval(args.judge_model, args.output, args.output)
         run_idk_judge(args.provider, args.judge_model, args.output, args.output)
-        
+
         run_ragas_judges_local(args.provider, judge_model, args.output, args.output)
         run_radbench_judge(args.provider, judge_model, args.output, args.output)
-        
+
         get_idk_conditioned_metrics(args.output, args.output)

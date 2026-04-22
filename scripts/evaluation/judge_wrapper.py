@@ -118,18 +118,47 @@ def get_idk_score(row, use_metric):
         return rl_f
     
     
+def get_idk_underspec_score(row, use_metric):
+    answerability_vals = row.get("answerability", [])
+    metrics = row.get("metrics", {})
+
+    answerability = answerability_vals[0] if answerability_vals else None
+
+    if answerability is None:
+        print("Error: answerability is None")
+    else:
+        print(answerability)
+
+    idk_eval = metrics.get("idk_eval")[0]
+    rl_f = metrics.get(use_metric)[0]
+    underspec_eval = metrics.get("underspecified_eval")[0]
+
+    if answerability in ["UNDERSPECIFIED"] and underspec_eval == 1:
+        return 1
+    elif answerability in ["UNDERSPECIFIED"] and underspec_eval != 1:
+        return 0
+    elif answerability in ["UNANSWERABLE", "CONVERSATIONAL"] and idk_eval == 1:
+        return 1
+    elif answerability in ["UNANSWERABLE", "CONVERSATIONAL"] and idk_eval in [0, 0.5]:
+        return 0
+    elif idk_eval == 1:
+        return 0
+    else:
+        return rl_f
+
+
 def get_idk_conditioned_metrics(input_file, output_file):
     model_predictions = read_json_with_pandas(filepath=f"{input_file}")
 
-    model_predictions['RL_F_idk'] = model_predictions.apply(get_idk_score, axis=1, use_metric = 'RL_F')
-    model_predictions['RB_llm_idk'] = model_predictions.apply(get_idk_score, axis=1, use_metric = 'RB_llm')
-    model_predictions['RB_agg_idk'] = model_predictions.apply(get_idk_score, axis=1, use_metric = 'RB_agg')
-    
-    model_predictions['metrics'] = model_predictions.apply(lambda row: update_or_create_dict(row.get('metrics'), row['RL_F_idk'], 'RL_F_idk'), axis=1)
-    model_predictions['metrics'] = model_predictions.apply(lambda row: update_or_create_dict(row.get('metrics'), row['RB_llm_idk'], 'RB_llm_idk'), axis=1)
-    model_predictions['metrics'] = model_predictions.apply(lambda row: update_or_create_dict(row.get('metrics'), row['RB_agg_idk'], 'RB_agg_idk'), axis=1)
+    model_predictions['RL_F_idk_underspecified'] = model_predictions.apply(get_idk_underspec_score, axis=1, use_metric = 'RL_F')
+    model_predictions['RB_llm_idk_underspecified'] = model_predictions.apply(get_idk_underspec_score, axis=1, use_metric = 'RB_llm')
+    model_predictions['RB_agg_idk_underspecified'] = model_predictions.apply(get_idk_underspec_score, axis=1, use_metric = 'RB_agg')
 
-    keys_to_remove = ["RL_F_idk", "RB_llm_idk", "RB_agg_idk"]
+    model_predictions['metrics'] = model_predictions.apply(lambda row: update_or_create_dict(row.get('metrics'), row['RL_F_idk_underspecified'], 'RL_F_idk_underspecified'), axis=1)
+    model_predictions['metrics'] = model_predictions.apply(lambda row: update_or_create_dict(row.get('metrics'), row['RB_llm_idk_underspecified'], 'RB_llm_idk_underspecified'), axis=1)
+    model_predictions['metrics'] = model_predictions.apply(lambda row: update_or_create_dict(row.get('metrics'), row['RB_agg_idk_underspecified'], 'RB_agg_idk_underspecified'), axis=1)
+
+    keys_to_remove = ["RL_F_idk_underspecified", "RB_llm_idk_underspecified", "RB_agg_idk_underspecified"]
     model_predictions = remove_keys_from_df(model_predictions, keys_to_remove)
 
     model_predictions.to_json(output_file, orient="records", lines=True)
@@ -300,6 +329,96 @@ def run_radbench_judge(provider, judge_model, input_file, output_file):
     keys_to_remove = ["inquiry", "document", "response", "reference_answer", "previous_conversation", "current_question", "RB_llm"]
     model_predictions = remove_keys_from_df(model_predictions, keys_to_remove)
     
+    model_predictions.to_json(output_file, orient="records", lines=True)
+
+# ================================================
+# Helper function for JSON extraction
+# ================================================
+def remove_invalid_escapes(s: str):
+    import re
+    pattern = r'\\(?![\"\\/bfnrt]|u[0-9a-fA-F]{4})'
+    return re.sub(pattern, '', s)
+
+def extract_and_format_json(raw_text: str):
+    import re
+    import json
+
+    if "```json" in raw_text:
+        pat = r"```json\s*(.*?)\s*```"
+    else:
+        pat = r"\{\s*(.*?)\s*\}"
+    match = re.search(pat, raw_text, re.DOTALL)
+    if not match:
+        raise ValueError("Check clarification, no valid JSON fenced by {} was found.")
+
+    json_string = match.group(1)
+    cleaned_json_string = remove_invalid_escapes(json_string)
+    if not cleaned_json_string.startswith("{"):
+        cleaned_json_string = "{" + cleaned_json_string
+    if not cleaned_json_string.endswith("}"):
+        cleaned_json_string = cleaned_json_string + "}"
+
+    try:
+        parsed = json.loads(cleaned_json_string)
+    except json.JSONDecodeError as e:
+        raise ValueError(f"Check clarification, invalid JSON format after cleaning: {e}")
+
+    return parsed
+
+# ================================================
+# Run Underspecified Judge
+# ================================================
+def underspecified_eval(model_name, input_file, output_file):
+    from underspecified_eval import format_underspecified_judge
+
+    if model_name == "openai":
+        client = AzureOpenAIClient('gpt-4o-mini-2024-07-18')
+    else:
+        clear_cuda()
+        llm_model = load_chat_openai_llm(model_name)
+
+    model_predictions = read_json_with_pandas(filepath=f"{input_file}")
+
+    model_predictions['inquiry'] = model_predictions['input'].apply(extract_conversation)
+    model_predictions['response'] = model_predictions['predictions'].apply(extract_texts)
+
+    formatted_conversations = format_underspecified_judge(model_predictions)
+
+    response_lst = []
+    for cur_prompt in tqdm(formatted_conversations):
+        if model_name == "openai":
+            raw_text = client.generate_response(cur_prompt)
+        else:
+            response_obj = llm_model(cur_prompt)
+            raw_text = response_obj.content
+
+        try:
+            formatted_json = extract_and_format_json(raw_text)
+            print("Extracted JSON:", formatted_json)
+            decision = formatted_json.get("decision", "").lower()
+
+            if decision == "yes":
+                score = 1
+            elif decision == "no":
+                score = 0
+            else:
+                score = 0.5
+        except:
+            score = 0.5
+
+        response_lst.append(score)
+
+    model_predictions['underspecified_eval'] = response_lst
+
+    if 'metrics' not in model_predictions:
+        model_predictions['metrics'] = None
+
+    model_predictions['metrics'] = model_predictions.apply(
+        lambda row: update_or_create_dict(row.get('metrics'), row['underspecified_eval'], 'underspecified_eval'),
+        axis=1
+    )
+
+    model_predictions = remove_keys_from_df(model_predictions, ["inquiry", "response", "underspecified_eval"])
     model_predictions.to_json(output_file, orient="records", lines=True)
 
 # ================================================
