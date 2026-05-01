@@ -16,3 +16,4 @@ bitsandbytes==0.47.0
 flash_attn==2.8.3
 pydantic==2.11.7
 vllm==0.10.2
+jinja2
