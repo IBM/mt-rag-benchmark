@@ -14,6 +14,7 @@ Transactions of the Association for Computational Linguistics, 2025
 
 [MTRAG-UN: A Benchmark for Open Challenges in Multi-Turn RAG Conversations](https://arxiv.org/abs/2602.23184)\
 _Sara Rosenthal, Yannis Katsis, Vraj Shah, Lihong He, Lucian Popa, Marina Danilevsky_
+ACL Findings, 2026
 
 If you use MTRAG, please cite the paper as follows:
 
@@ -33,14 +34,44 @@ If you use MTRAG, please cite the paper as follows:
 If you use MTRAG-UN, please cite the paper as follows:
 
 ```
-@misc{rosenthal2026mtragun,
-      title={MTRAG-UN: A Benchmark for Open Challenges in Multi-Turn RAG Conversations},
-      author={Sara Rosenthal and Yannis Katsis and Vraj Shah and Lihong He and Lucian Popa and Marina Danilevsky},
-      year={2026},
-      eprint={2602.23184},
-      archivePrefix={arXiv},
-      primaryClass={cs.CL},
-      url={https://arxiv.org/abs/2602.23184},
+@inproceedings{rosenthal-etal-2026-mtrag,
+    title = "{MTRAG}-{UN}: A Benchmark for Open Challenges in Multi-Turn {RAG} Conversations",
+    author = "Rosenthal, Sara  and
+      Katsis, Yannis  and
+      Shah, Vraj  and
+      He, Lihong  and
+      Popa, Lucian  and
+      Danilevsky, Marina",
+    booktitle = "Findings of the {A}ssociation for {C}omputational {L}inguistics: {ACL} 2026",
+    month = jul,
+    year = "2026",
+    address = "San Diego, California, United States",
+    publisher = "Association for Computational Linguistics",
+    url = "https://aclanthology.org/2026.findings-acl.503/",
+    doi = "10.18653/v1/2026.findings-acl.503",
+    pages = "10363--10369",
+    ISBN = "979-8-89176-395-1",
+}
+```
+
+Our SemEval task, MTRAGEval, can be cited as follows:
+
+```
+@inproceedings{rosenthal-etal-2026-semeval,
+    title = "{S}em{E}val-2026 Task 8: {MTRAGE}val: Evaluating Multi-Turn {RAG} Conversations",
+    author = "Rosenthal, Sara  and
+      Shah, Vraj  and
+      Katsis, Yannis  and
+      Danilevsky, Marina",
+    booktitle = "Proceedings of the 20th {I}nternational {W}orkshop on {S}emantic {E}valuation (2026)",
+    month = jul,
+    year = "2026",
+    address = "San Diego, California, USA",
+    publisher = "Association for Computational Linguistics",
+    url = "https://aclanthology.org/2026.semeval-1.447/",
+    doi = "10.18653/v1/2026.semeval-1.447",
+    pages = "3673--3690",
+    ISBN = "979-8-89176-414-9",
 }
 ```
 
@@ -112,7 +143,7 @@ We provide [analytics files](mtrag-human/evaluations) in InspectorRAGet format, 
 
 ## Contributors
 
-Sara Rosenthal, Yannis Katsis, Kshitij Fadnis, Chulaka Gunasekara, Young-Suk Lee, Lucian Popa, Vraj Shah, Huaiyu Zhu, Lihong He, Danish Contractor, Marina Danilevsky
+Sara Rosenthal, Yannis Katsis, Vraj Shah, Kshitij Fadnis, Chulaka Gunasekara, Young-Suk Lee, Lucian Popa, Huaiyu Zhu, Lihong He, Danish Contractor, Marina Danilevsky
 
 ## Contact
 
