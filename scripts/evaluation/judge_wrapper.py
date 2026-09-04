@@ -98,11 +98,18 @@ class LocalLLM(LLM):
 # ================================================
 # Get IDK conditioning score
 # ================================================
-def get_idk_score(row, use_metric):
-    answerability_vals = row.get("answerability", [])
-    metrics = row.get("metrics", {})
+def _get_answerability(row):
+    for key in ("answerability", "Answerability"):
+        vals = row.get(key)
+        if vals is None or isinstance(vals, float):  # absent, or pandas NaN
+            continue
+        return vals if isinstance(vals, str) else (vals[0] if len(vals) else None)
+    raise KeyError(f"No answerability label on task {row.get('task_id')!r}")
 
-    answerability = answerability_vals[0] if answerability_vals else None
+
+def get_idk_score(row, use_metric):
+    metrics = row.get("metrics", {})
+    answerability = _get_answerability(row)
     idk_eval = metrics.get("idk_eval")[0]
     rl_f = metrics.get(use_metric)[0]
 
@@ -119,15 +126,8 @@ def get_idk_score(row, use_metric):
     
     
 def get_idk_underspec_score(row, use_metric):
-    answerability_vals = row.get("answerability", [])
     metrics = row.get("metrics", {})
-
-    answerability = answerability_vals[0] if answerability_vals else None
-
-    if answerability is None:
-        print("Error: answerability is None")
-    else:
-        print(answerability)
+    answerability = _get_answerability(row)
 
     idk_eval = metrics.get("idk_eval")[0]
     rl_f = metrics.get(use_metric)[0]
