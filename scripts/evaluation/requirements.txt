@@ -8,7 +8,7 @@ bert_score
 rouge-score
 ragas==0.3.3
 protobuf==5.29.3
-sentencepiece==0.2.0
+sentencepiece==0.2.1
 pytrec_eval==0.5
 langchain==0.2.17
 langchain-community==0.3.27
