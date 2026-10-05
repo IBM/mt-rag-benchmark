@@ -7,7 +7,7 @@ evaluate==0.4.3
 bert_score
 rouge-score
 ragas==0.3.3
-protobuf==5.29.3
+protobuf==5.29.6
 sentencepiece==0.2.1
 pytrec_eval==0.5
 langchain==0.2.17
