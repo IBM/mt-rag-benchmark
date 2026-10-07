@@ -1,4 +1,4 @@
-accelerate==1.4.0
+accelerate==1.15.0
 tqdm
 beautifulsoup4
 lxml
@@ -10,7 +10,7 @@ ragas==0.3.3
 protobuf==5.29.6
 sentencepiece==0.2.1
 pytrec_eval==0.5
-langchain==0.2.17
+langchain==1.4.3
 langchain-community==0.3.27
 bitsandbytes==0.47.0
 flash_attn==2.8.3
